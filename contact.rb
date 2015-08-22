@@ -13,7 +13,7 @@ class Contact
     first_name + " " + last_name
   end
 
-  def to_S
-    puts "ID: #{@id} \n First Name: #{@first_name} \n Last Name: #{@last_name} \n Email: #{@email} \n Notes: #{@notes}"
+  def to_s
+    "ID: #{@id} \nFirst Name: #{@first_name} \nLast Name: #{@last_name} \nEmail: #{@email} \nNotes: #{@notes}"
   end
 end
