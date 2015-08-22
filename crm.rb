@@ -80,6 +80,9 @@ class CRM
     end
   end
 
+  def clear_term
+    puts "\e[H\e[2J"
+  end
 end
 
 
