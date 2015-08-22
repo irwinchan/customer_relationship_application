@@ -80,9 +80,30 @@ class CRM
     end
   end
 
+  def modify_contact
+    clear_term
+
+    puts "Please enter the ID for the contact you wish to modify"
+    id = gets.chomp
+
+    contact = get_contact_by_id(id)
+    puts contact
+
+    puts "Is this the contact you wish to modify? (yes/no)"
+    confirm_sel = gets.chomp
+
+    if confirm_sel == "yes"
+      modify_selected_contact(contact)
+      clear_term
+    end
+
+     return main_menu
+  end
+
   def clear_term
     puts "\e[H\e[2J"
   end
+
 end
 
 
