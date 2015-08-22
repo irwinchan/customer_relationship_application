@@ -12,4 +12,8 @@ class Contact
   def full_name
     first_name + " " + last_name
   end
+
+  def to_S
+    puts "ID: #{@id} \n First Name: #{@first_name} \n Last Name: #{@last_name} \n Email: #{@email} \n Notes: #{@notes}"
+  end
 end
