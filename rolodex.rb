@@ -25,6 +25,15 @@ class Rolodex
     puts "Sorry, there is no record for ID: #{id}"
   end
 
+  def get_key_by_id(id)
+    @contacts.each_with_index do |contact, index|
+      if contact.id == id
+       return index
+      end
+    end
+
+  end
+
   def delete_contact_by_id(id)
       @contacts.each_with_index do |contact, index|
       if contact.id == id
