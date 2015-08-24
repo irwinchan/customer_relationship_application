@@ -54,6 +54,10 @@ class Rolodex
     contact.first_name = first_name
   end
 
+  def modify_last_name_by_id(id, last_name)
+    contact = get_contact_by_id(id)
+    contact.last_name = last_name
+  end
 
 
   def all
