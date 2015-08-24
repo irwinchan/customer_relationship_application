@@ -15,8 +15,12 @@ class Rolodex
     @contacts << contact
   end
 
+  def print_contact_by_id(id)
+    puts get_contact_by_id(id)
+  end
+
   def get_contact_by_id(id)
-    @contacts.each do |index, contact|
+    @contacts.each do |contact|
       if contact.id == id
         return contact
       end
@@ -45,10 +49,12 @@ class Rolodex
     puts "Sorry, there is no record for ID: #{id}"
   end
 
-  def modify_selected(contact)
-    delete_contact_by_id(contact.id)
-    @contact[] << contact
+  def modify_first_name_by_id(id, first_name)
+    contact = get_contact_by_id(id)
+    contact.first_name = first_name
   end
+
+
 
   def all
     @contacts
