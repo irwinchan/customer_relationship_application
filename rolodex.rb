@@ -15,7 +15,7 @@ class Rolodex
     @contacts << contact
   end
 
-  def print_contact_by_id(id)
+  def display_contact_by_id(id)
     puts get_contact_by_id(id)
   end
 
@@ -35,7 +35,6 @@ class Rolodex
        return index
       end
     end
-
   end
 
   def delete_contact_by_id(id)
@@ -67,6 +66,30 @@ class Rolodex
   def modify_notes_by_id(id, notes)
     contact = get_contact_by_id(id)
     contact.notes = notes
+  end
+
+  def display_attribute_first_name
+    @contacts.each do |contact|
+      puts "#{contact.first_name}"
+    end
+  end
+
+  def display_attribute_last_name
+    @contacts.each do |contact|
+      puts "#{contact.last_name}"
+    end
+  end
+
+  def display_attribute_email
+    @contacts.each do |contact|
+      puts "#{contact.email}"
+    end
+  end
+
+  def display_attribute_notes
+    @contacts.each do |contact|
+      puts "#{contact.email}"
+    end
   end
 
   def all

@@ -11,7 +11,15 @@ class CRM
   def initialize(name)
     @title = name
     @rolodex = Rolodex.new
-    @rolodex.add_contact("irwin", "chan", "email@email.com", "notes notes notes")
+
+
+    # TEST DATA -- REMOVE AFTER TESTING
+    @rolodex.add_contact("irwin", "chan", "asdfasdfasd", "asdfasdfasdf")
+    @rolodex.add_contact("sherry", "Donalds", "ghdfgdfgdg", "lsdfjlkkla")
+    @rolodex.add_contact("Bret", "Hart", "jskdfa;", "mfoasdlfaj;sdf")
+    @rolodex.add_contact("Gary", "Perry", "fooo@bar", "pwnpwnow")
+    @rolodex.add_contact("Bruce", "Wayne", "jskaf;klsd;f", "cxvxcvxcvxvc")
+    @rolodex.add_contact("Spider", "Man", "sdfsdfsdfsdfs", "notes notes notes")
   end
 
   # This is what attr_accessor does:
@@ -159,10 +167,13 @@ class CRM
     puts "4. Notes"
     print "Enter selection: "
     selection = gets.chomp.to_i
+
     while !(1..4).include?(selection)
      puts "Please enter a valid number"
      selection = gets.chomp.to_i
     end
+
+    clear_term
     case selection
     when 1 then @rolodex.display_attribute_first_name
     when 2 then @rolodex.display_attribute_last_name
