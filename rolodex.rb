@@ -64,6 +64,10 @@ class Rolodex
     contact.email = email
   end
 
+  def modify_notes_by_id(id, notes)
+    contact = get_contact_by_id(id)
+    contact.notes = notes
+  end
 
   def all
     @contacts
