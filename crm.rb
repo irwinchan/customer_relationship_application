@@ -11,6 +11,7 @@ class CRM
   def initialize(name)
     @title = name
     @rolodex = Rolodex.new
+    @rolodex.add_contact("irwin", "chan", "email@email.com", "notes notes notes")
   end
 
   # This is what attr_accessor does:
@@ -59,6 +60,7 @@ class CRM
   end
 
   def add_contact
+    clear_term
     print "First name: "
     first_name = gets.chomp
 
@@ -72,9 +74,13 @@ class CRM
     notes = gets.chomp
 
     @rolodex.add_contact(first_name, last_name, email, notes)
+    clear_term
+    puts "Contact Added: #{first_name}, #{last_name}, #{email}, #{notes}"
+    puts ""
   end
 
   def display_all_contacts
+    clear_term
     @rolodex.all.each do |contact|
       puts "#{contact.id}: #{contact.full_name} / #{contact.email}"
     end
@@ -86,42 +92,65 @@ class CRM
     puts "Please enter the ID for the contact you wish to modify"
     id = gets.chomp.to_i
 
+    puts ""
     @rolodex.print_contact_by_id(id)
 
     puts "Is this the contact you wish to modify? (yes/no)"
     while gets.chomp == "yes"
+      puts ""
       puts "Please select the field you would like to modify:"
       puts "1. First name"
       puts "2. Last name"
       puts "3. Email"
       puts "4. Notes"
-      puts "5. Cancel"
+      puts "5. Done"
 
       selection = gets.chomp.to_i
 
       if selection == 1
-        puts "First name:"
+        print "Enter new value for First name:"
         first_name = gets.chomp
-        modify_first_name_by_id(id, first_name)
+        @rolodex.modify_first_name_by_id(id, first_name)
+        clear_term
+        break
       elsif selection == 2
-        puts "Last name:"
+        print "Enter new value for Last name:"
         last_name = gets.chomp
-        modify_last_name_by_id(id, last_name)
+        @rolodex.modify_last_name_by_id(id, last_name)
+        clear_term
+        break
       elsif selection == 3
-        puts "Email:"
+        print "Enter new value for Email:"
         email = gets.chomp
-        modify_email_by_id(id, email)
+        @rolodex.modify_email_by_id(id, email)
+        clear_term
+        break
       elsif selection == 4
-        puts "Notes:"
+        print "Enter new value for Notes:"
         notes = gets.chomp
-        modify_notes_by_id(id, notes)
+        @rolodex.modify_notes_by_id(id, notes)
+        clear_term
+        break
       elsif selection == 5
+        clear_term
         break
       else
         puts "Please enter a valid number"
       end
     end
+
+    clear_term
   end
+
+  def display_contact
+    clear_term
+    print "Please enter the ID of the contact you wish to display: "
+    id = gets.chomp.to_i
+    puts ""
+    @rolodex.print_contact_by_id(id)
+    puts ""
+  end
+
 
   def clear_term
     puts "\e[H\e[2J"
