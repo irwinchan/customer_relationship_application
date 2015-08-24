@@ -93,7 +93,7 @@ class CRM
     id = gets.chomp.to_i
 
     puts ""
-    @rolodex.print_contact_by_id(id)
+    @rolodex.display_contact_by_id(id)
 
     puts "Is this the contact you wish to modify? (yes/no)"
     while gets.chomp == "yes"
@@ -147,10 +147,29 @@ class CRM
     print "Please enter the ID of the contact you wish to display: "
     id = gets.chomp.to_i
     puts ""
-    @rolodex.print_contact_by_id(id)
+    @rolodex.display_contact_by_id(id)
     puts ""
   end
 
+  def display_contact_attribute
+    puts "Enter the attribute you wish to display"
+    puts "1. First name"
+    puts "2. Last name"
+    puts "3. Email"
+    puts "4. Notes"
+    print "Enter selection: "
+    selection = gets.chomp.to_i
+    while !(1..4).include?(selection)
+     puts "Please enter a valid number"
+     selection = gets.chomp.to_i
+    end
+    case selection
+    when 1 then @rolodex.display_attribute_first_name
+    when 2 then @rolodex.display_attribute_last_name
+    when 3 then @rolodex.display_attribute_email
+    when 4 then @rolodex.display_attribute_notes
+    end
+  end
 
   def clear_term
     puts "\e[H\e[2J"
