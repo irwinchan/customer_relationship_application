@@ -47,7 +47,7 @@ class CRM
     # input = user_input
     case input
     when 1 then add_contact
-    when 2 then modify_contact
+    when 2 then display_modify_menu
     when 3 then display_all_contacts
     when 4 then display_contact
     when 5 then display_contact_attribute
@@ -80,24 +80,48 @@ class CRM
     end
   end
 
-  def modify_contact
+  def display_modify_menu
     clear_term
 
     puts "Please enter the ID for the contact you wish to modify"
     id = gets.chomp.to_i
 
-    contact = @rolodex.get_contact_by_id(id)
-    puts contact
+    @rolodex.print_contact_by_id(id)
 
     puts "Is this the contact you wish to modify? (yes/no)"
-    confirm_sel = gets.chomp
+    while gets.chomp == "yes"
+      puts "Please select the field you would like to modify:"
+      puts "1. First name"
+      puts "2. Last name"
+      puts "3. Email"
+      puts "4. Notes"
+      puts "5. Cancel"
 
-    if confirm_sel == "yes"
-      @rolodex.modify_selected_contact(contact)
-      clear_term
+      selection = gets.chomp.to_i
+
+      if selection == 1
+        puts "First name:"
+        first_name = gets.chomp
+        modify_first_name_by_id(id, first_name)
+      elsif selection == 2
+        puts "Last name:"
+        last_name = gets.chomp
+        modify_last_name_by_id(id, last_name)
+      elsif selection == 3
+        puts "Email:"
+        email = gets.chomp
+        modify_email_by_id(id, email)
+      elsif selection == 4
+        puts "Notes:"
+        notes = gets.chomp
+        modify_notes_by_id(id, notes)
+      elsif selection == 5
+        break
+      else
+        puts "Please enter a valid number"
+      end
     end
   end
-
 
   def clear_term
     puts "\e[H\e[2J"
@@ -110,7 +134,6 @@ CRM.run("Bitmaker Labs CRM")
 
 # my_crm = CRM.new("Bitmaker Labs CRM")
 # my_crm.main_menu
-
 
 # my_crm.title # => "Bitmaker Labs CRM"
 # my_crm.title = "Something else"
