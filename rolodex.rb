@@ -59,6 +59,11 @@ class Rolodex
     contact.last_name = last_name
   end
 
+  def modify_email_by_id(id, email)
+    contact = get_contact_by_id(id)
+    contact.email = email
+  end
+
 
   def all
     @contacts
