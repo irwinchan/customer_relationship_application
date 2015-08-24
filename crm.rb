@@ -180,12 +180,20 @@ class CRM
     when 3 then @rolodex.display_attribute_email
     when 4 then @rolodex.display_attribute_notes
     end
+    puts ""
+  end
+
+  def delete_contact
+    print "Enter the ID of the contact you wish to delete: "
+    id = gets.chomp.to_i
+    @rolodex.delete_contact_by_id(id)
+    puts "Contact Deleted"
+    puts ""
   end
 
   def clear_term
     puts "\e[H\e[2J"
   end
-
 end
 
 
