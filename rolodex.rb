@@ -38,7 +38,7 @@ class Rolodex
   end
 
   def delete_contact_by_id(id)
-      @contacts.each_with_index do |contact, index|
+    @contacts.each_with_index do |contact, index|
       if contact.id == id
         @contacts.delete_at(index)
         return
